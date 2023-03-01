@@ -11,16 +11,20 @@ public class player : MonoBehaviour
     public Color colorYellow;
     public Color colorMagenta;
     public Color colorPink;
+    string x;
 
     private void Start()
     {
+        rb.gravityScale = 0f;
         SetRandomColor();
+        x = currentColor;
     }
     void Update()
     {
         if (Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0))
         {
             rb.velocity = Vector2.up * jumpForce;
+            rb.gravityScale = 3f;
         }
     }
 
@@ -29,7 +33,13 @@ public class player : MonoBehaviour
     {
         if(collision.tag == "ColorChanger")
         {
-            SetRandomColor();
+            
+            while(x == currentColor)
+            {
+                SetRandomColor();
+            }
+            x = currentColor;
+            
             Destroy(collision.gameObject);
             return;
         }
