@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour
     public void Level1()
     {
         SceneManager.LoadScene("SampleScene");
+        Time.timeScale= 1.0f;
     }
 
     public void ContinueButton()

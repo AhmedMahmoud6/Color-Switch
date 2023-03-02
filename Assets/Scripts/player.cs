@@ -3,15 +3,21 @@ using UnityEngine.SceneManagement;
 public class player : MonoBehaviour
 {
     public float jumpForce = 10f;
-    public Rigidbody2D rb;
     public string currentColor;
-    public SpriteRenderer sr;
     public float currentPos;
+    
+    public Rigidbody2D rb;
+    public SpriteRenderer sr;
+    
     public Color colorCyan;
     public Color colorYellow;
     public Color colorMagenta;
     public Color colorPink;
+    
     string x;
+
+    public static bool IsDead = false;
+    public GameObject DeathMenuUI;
 
     private void Start()
     {
@@ -46,8 +52,7 @@ public class player : MonoBehaviour
 
         if(collision.tag != currentColor)
         {
-            transform.position = new Vector3(transform.position.x,currentPos,transform.position.z);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            Died();
         }
     }
 
@@ -75,5 +80,27 @@ public class player : MonoBehaviour
                 sr.color = colorPink;
                 break;
         }
+    }
+
+
+    void Died()
+    {
+        DeathMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+
+    }
+
+
+    public void Retry()
+    {
+        DeathMenuUI.SetActive(false);
+        transform.position = new Vector3(transform.position.x, currentPos, transform.position.z);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
+    }
+
+    public void returnToMainMenu()
+    {
+        SceneManager.LoadScene("Levels");
     }
 }
