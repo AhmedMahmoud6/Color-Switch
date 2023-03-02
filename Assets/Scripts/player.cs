@@ -18,6 +18,7 @@ public class player : MonoBehaviour
 
     public static bool IsDead = false;
     public GameObject DeathMenuUI;
+    public GameObject WinMenuUI;
 
     private void Start()
     {
@@ -50,9 +51,14 @@ public class player : MonoBehaviour
             return;
         }
 
-        if(collision.tag != currentColor)
+        if(collision.tag != currentColor && collision.tag != "Win")
         {
             Died();
+        }
+        if (collision.tag == "Win")
+        {
+            WinMenuUI.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 
