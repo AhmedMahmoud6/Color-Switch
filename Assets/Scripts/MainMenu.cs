@@ -3,9 +3,21 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Time.timeScale= 1.0f;
+    }
     public void Level1()
     {
         SceneManager.LoadScene("SampleScene");
+        Time.timeScale= 1.0f;
+    }
+
+    public void Level2()
+    {
+        SceneManager.LoadScene("Level2");
         Time.timeScale= 1.0f;
     }
 
