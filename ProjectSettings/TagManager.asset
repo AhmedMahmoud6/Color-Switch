@@ -9,6 +9,8 @@ TagManager:
   - Pink
   - Magenta
   - Yellow
+  - Win
+  - Floor
   layers:
   - Default
   - TransparentFX
