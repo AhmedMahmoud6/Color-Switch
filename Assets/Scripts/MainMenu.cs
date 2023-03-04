@@ -3,37 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-
-    public void NextLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        Time.timeScale= 1.0f;
-    }
-    public void Level1()
-    {
-        SceneManager.LoadScene("SampleScene");
-        Time.timeScale= 1.0f;
-    }
-
-    public void Level2()
+    public void PlayButton()
     {
         SceneManager.LoadScene("Level2");
-        Time.timeScale= 1.0f;
+        Time.timeScale = 1.0f;
     }
-
-    public void ContinueButton()
-    {
-        SceneManager.LoadScene("Levels");
-    }
-
-    public void BackButton()
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
-
 }

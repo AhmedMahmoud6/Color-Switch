@@ -95,18 +95,4 @@ public class player : MonoBehaviour
         Time.timeScale = 0f;
 
     }
-
-
-    public void Retry()
-    {
-        DeathMenuUI.SetActive(false);
-        transform.position = new Vector3(transform.position.x, currentPos, transform.position.z);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Time.timeScale = 1f;
-    }
-
-    public void returnToMainMenu()
-    {
-        SceneManager.LoadScene("Levels");
-    }
 }

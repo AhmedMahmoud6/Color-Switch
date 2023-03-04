@@ -6,41 +6,20 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool GameIsPaused = false;
-    public GameObject pauseMenuUI;
-    void Update()
+    public Transform player;
+    public Transform cam;
+    public GameObject DeathMenuUI;
+    public void Retry()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            if(GameIsPaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
-        }
-    }
-
-    public void Resume()
-    {
-        pauseMenuUI.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        cam.position = new Vector2 (cam.position.x,player.position.y);
+        DeathMenuUI.SetActive(false);
         Time.timeScale = 1f;
-        GameIsPaused = false;
-
     }
 
-    void Pause()
+    public void returnToMenu()
     {
-        pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPaused= true;
+        SceneManager.LoadScene("StartMenu");
+        Time.timeScale = 1f;
     }
-
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
-
 }
