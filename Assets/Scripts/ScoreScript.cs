@@ -6,17 +6,19 @@ public class ScoreScript : MonoBehaviour
 {
     public GameObject DeathObject;
     public GameObject myscoreTextObject;
+    public Text Highscore;
     public Text myscoreText;
     public Text DeathScore;
     public int ScoreNumber;
-
-
+    public int highscore = 0;
 
     void Start()
     {
+        highscore = PlayerPrefs.GetInt("highscore", 0);
         ScoreNumber = 0;
         myscoreText.text = "Score : " + ScoreNumber;
         DeathScore.text = "Score : " + ScoreNumber;
+        Highscore.text = "HIGHSCORE : " + highscore;
         DeathObject.SetActive(false);
     }
 
@@ -29,6 +31,11 @@ public class ScoreScript : MonoBehaviour
             Destroy(Star.gameObject);
             myscoreText.text = "Score : " + ScoreNumber;
             DeathScore.text = "Score is " + ScoreNumber;
+            Highscore.text = "HIGHSCORE : " + highscore;
+            if (highscore < ScoreNumber)
+            {
+                PlayerPrefs.SetInt("highscore", ScoreNumber);
+            }
         }
 
         if(player.IsDead)
