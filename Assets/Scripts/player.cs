@@ -64,7 +64,7 @@ public class player : MonoBehaviour
         if(collision.tag == "Floor")
         {
             rb.bodyType = RigidbodyType2D.Static;
-            transform.position = new Vector2(transform.position.x, -3.377f);
+            transform.position = new Vector2(transform.position.x, -3.449f);
         }
     }
 
