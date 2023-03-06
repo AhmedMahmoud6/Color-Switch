@@ -1,5 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
+
 public class player : MonoBehaviour
 {
     public float jumpForce = 10f;
@@ -20,15 +23,18 @@ public class player : MonoBehaviour
     public GameObject DeathMenuUI;
     public GameObject WinMenuUI;
 
+    ScoreScript scorescript;
+
     private void Start()
     {
+        IsDead = false;
         rb.gravityScale = 0f;
         SetRandomColor();
         x = currentColor;
     }
-    void Update()
+    void Update() 
     {
-        if (Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0))
+        if (Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0)) 
         {
             rb.bodyType = RigidbodyType2D.Dynamic;
             rb.velocity = Vector2.up * jumpForce;
@@ -52,8 +58,9 @@ public class player : MonoBehaviour
             return;
         }
 
-        if(collision.tag != currentColor && collision.tag != "Win" && collision.tag != "Floor")
+        if(collision.tag != currentColor && collision.tag != "Win" && collision.tag != "Floor" && collision.tag != "Star")
         {
+            IsDead = true;
             Died();
         }
         if (collision.tag == "Win")
@@ -99,6 +106,5 @@ public class player : MonoBehaviour
     {
         DeathMenuUI.SetActive(true);
         Time.timeScale = 0f;
-
     }
 }

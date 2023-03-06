@@ -11,17 +11,20 @@ public class HorizontalSpawn : MonoBehaviour
     [SerializeField] private GameObject Prefab4;
     [SerializeField] private GameObject Prefab5;
     [SerializeField] private GameObject ColorChanger;
+    [SerializeField] private GameObject Star;
     public float space = 7;
     float y = -4f;
     float yChanger = -7.5f;
+    float yStar = -4.1f;
 
     private void Start()
     {
         for (int i = 0; i <= 20; i++)
         {
             Instantiate(ColorChanger, new Vector2(0, yChanger += space), Quaternion.identity);
+            Instantiate(Star, new Vector2(0, yStar += space), Quaternion.identity);
 
-            RandNum = Random.Range(0, 6);
+            RandNum = Random.Range(0, 7);
             switch (RandNum)
             {
                 case 0:
@@ -48,6 +51,7 @@ public class HorizontalSpawn : MonoBehaviour
                     Instantiate(Prefab5, new Vector2(-1.32f, y += space), Quaternion.identity);
                     Prefab5.SetActive(true);
                     break;
+
             }
         }
     }
