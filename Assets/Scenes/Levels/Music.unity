@@ -161,7 +161,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cf2d95350f4fbf0419e19e3b8bdbfd8e, type: 3}
   - {fileID: 8300000, guid: 8dbe51f023d13004fa6e03f30f8a8fd1, type: 3}
   - {fileID: 8300000, guid: 624dae10e4fb3c6479668dee77773a70, type: 3}
-  volume: 0.5
+  volume: 0.7
   songsPlayed: 0
   beenPlayed: 
 --- !u!82 &926450884
@@ -749,7 +749,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448676599}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -11.455}
+  m_LocalPosition: {x: 0, y: 0.69, z: -11.455}
   m_LocalScale: {x: 0.98064, y: 0.98064, z: 0.98064}
   m_ConstrainProportionsScale: 1
   m_Children:

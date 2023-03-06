@@ -30,6 +30,7 @@ public class player : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0))
         {
+            rb.bodyType = RigidbodyType2D.Dynamic;
             rb.velocity = Vector2.up * jumpForce;
             rb.gravityScale = 3f;
         }
@@ -51,7 +52,7 @@ public class player : MonoBehaviour
             return;
         }
 
-        if(collision.tag != currentColor && collision.tag != "Win")
+        if(collision.tag != currentColor && collision.tag != "Win" && collision.tag != "Floor")
         {
             Died();
         }
@@ -59,6 +60,11 @@ public class player : MonoBehaviour
         {
             WinMenuUI.SetActive(true);
             Time.timeScale = 0f;
+        }
+        if(collision.tag == "Floor")
+        {
+            rb.bodyType = RigidbodyType2D.Static;
+            transform.position = new Vector2(transform.position.x, -3.377f);
         }
     }
 
