@@ -23,7 +23,6 @@ public class player : MonoBehaviour
     public GameObject DeathMenuUI;
     public GameObject WinMenuUI;
 
-    ScoreScript scorescript;
 
     private void Start()
     {
@@ -39,6 +38,11 @@ public class player : MonoBehaviour
             rb.bodyType = RigidbodyType2D.Dynamic;
             rb.velocity = Vector2.up * jumpForce;
             rb.gravityScale = 3f;
+        }
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            retry();
+            Time.timeScale = 1f;
         }
     }
 
@@ -106,5 +110,11 @@ public class player : MonoBehaviour
     {
         DeathMenuUI.SetActive(true);
         Time.timeScale = 0f;
+    }
+
+
+    void retry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
