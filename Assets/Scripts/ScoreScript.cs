@@ -6,9 +6,14 @@ public class ScoreScript : MonoBehaviour
 {
     public GameObject DeathObject;
     public GameObject myscoreTextObject;
+    public GameObject WinObject;
+
     public Text Highscore;
     public Text myscoreText;
     public Text DeathScore;
+
+    public Text ScoreWin;
+
     public int ScoreNumber;
     public int highscore = 0;
 
@@ -17,8 +22,12 @@ public class ScoreScript : MonoBehaviour
         highscore = PlayerPrefs.GetInt("highscore", 0);
         ScoreNumber = 0;
         myscoreText.text = "Score : " + ScoreNumber;
+        
         DeathScore.text = "Score : " + ScoreNumber;
         Highscore.text = "HIGHSCORE : " + highscore;
+
+        ScoreWin.text = "Score is " + ScoreNumber;
+
         DeathObject.SetActive(false);
     }
 
@@ -32,6 +41,7 @@ public class ScoreScript : MonoBehaviour
             myscoreText.text = "Score : " + ScoreNumber;
             DeathScore.text = "Score is " + ScoreNumber;
             Highscore.text = "HIGHSCORE : " + highscore;
+            ScoreWin.text = "Score is " + ScoreNumber;
             if (highscore < ScoreNumber)
             {
                 PlayerPrefs.SetInt("highscore", ScoreNumber);
@@ -43,5 +53,12 @@ public class ScoreScript : MonoBehaviour
             myscoreTextObject.SetActive(false);
             DeathObject.SetActive(true);
         }
+
+        if(player.Won)
+        {
+            WinObject.SetActive(true);
+            myscoreTextObject.SetActive(false);
+        }
+
     }
 }

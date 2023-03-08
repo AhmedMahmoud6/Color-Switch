@@ -20,12 +20,16 @@ public class player : MonoBehaviour
     string x;
 
     public static bool IsDead = false;
+    public static bool Won = false;
+    public bool IsPaused = false;
+
     public GameObject DeathMenuUI;
     public GameObject WinMenuUI;
-
+    public GameObject PauseMenuUI;
 
     private void Start()
     {
+        WinMenuUI.SetActive(false);
         IsDead = false;
         rb.gravityScale = 0f;
         SetRandomColor();
@@ -33,16 +37,22 @@ public class player : MonoBehaviour
     }
     void Update() 
     {
-        if (Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0)) 
+        if (Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(1)) 
         {
             rb.bodyType = RigidbodyType2D.Dynamic;
             rb.velocity = Vector2.up * jumpForce;
             rb.gravityScale = 3f;
         }
-        if(Input.GetKeyDown(KeyCode.R))
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
-            retry();
-            Time.timeScale = 1f;
+            if(IsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
         }
     }
 
@@ -69,6 +79,7 @@ public class player : MonoBehaviour
         }
         if (collision.tag == "Win")
         {
+            Won = true;
             WinMenuUI.SetActive(true);
             Time.timeScale = 0f;
         }
@@ -112,9 +123,24 @@ public class player : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-
     void retry()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+
+
+    void Resume()
+    {
+        PauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        IsPaused = false;
+    }
+
+    void Pause()
+    {
+        PauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        IsPaused = true;
     }
 }

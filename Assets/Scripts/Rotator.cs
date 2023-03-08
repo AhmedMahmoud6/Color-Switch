@@ -8,4 +8,5 @@ public class Rotator : MonoBehaviour
     {
         transform.Rotate(0f,0f,speed * Time.deltaTime);
     }
+
 }

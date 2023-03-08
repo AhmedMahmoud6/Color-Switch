@@ -14,45 +14,37 @@ public class HorizontalSpawn : MonoBehaviour
     [SerializeField] private GameObject Star;
     public float space = 7;
     float y = -4f;
-    float yChanger = -7.5f;
-    float yStar = -4.1f;
 
     private void Start()
     {
-        for (int i = 0; i <= 20; i++)
+        for (int i = 0; i < 20; i++)
         {
-            Instantiate(ColorChanger, new Vector2(0, yChanger += space), Quaternion.identity);
-            Instantiate(Star, new Vector2(0, yStar += space), Quaternion.identity);
-
-            RandNum = Random.Range(0, 7);
+            RandNum = Random.Range(0, 6);
             switch (RandNum)
             {
                 case 0:
                     Instantiate(Prefab0, new Vector2(0, y += space), Quaternion.identity);
-                    Prefab0.SetActive(true);
                     break;
                 case 1:
                     Instantiate(Prefab1, new Vector2(0, y += space), Quaternion.identity);
-                    Prefab1.SetActive(true);
                     break;
                 case 2:
                     Instantiate(Prefab2, new Vector2(0, y += space), Quaternion.identity);
-                    Prefab2.SetActive(true);
                     break;
                 case 3:
                     Instantiate(Prefab3, new Vector2(0, y += space), Quaternion.identity);
-                    Prefab3.SetActive(true);
                     break;
                 case 4:
                     Instantiate(Prefab4, new Vector2(0, y += space), Quaternion.identity);
-                    Prefab4.SetActive(true);
                     break;
                 case 5:
-                    Instantiate(Prefab5, new Vector2(-1.32f, y += space), Quaternion.identity);
-                    Prefab5.SetActive(true);
+                    Instantiate(Prefab5, new Vector2(-1.20f, y += space), Quaternion.identity);
                     break;
 
             }
+            Instantiate(ColorChanger, new Vector2(0, y - 3.5f), Quaternion.identity);
+            Instantiate(Star, new Vector2(0, y), Quaternion.identity);
+
         }
     }
 

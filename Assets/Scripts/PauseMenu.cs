@@ -12,7 +12,11 @@ public class PauseMenu : MonoBehaviour
     public GameObject DeathMenuUI;
 
 
-
+    public void Cointinue()
+    {
+        Time.timeScale = 1f;
+        DeathMenuUI.SetActive(false);
+    }
  
     public void Retry()
     {
