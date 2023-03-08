@@ -19,7 +19,7 @@ public class ScoreScript : MonoBehaviour
 
     void Start()
     {
-        highscore = PlayerPrefs.GetInt("highscore", 0);
+        highscore = PlayerPrefs.GetInt("HIghscore", 0);
         ScoreNumber = 0;
         myscoreText.text = "Score : " + ScoreNumber;
         
@@ -44,7 +44,7 @@ public class ScoreScript : MonoBehaviour
             ScoreWin.text = "Score is " + ScoreNumber;
             if (highscore < ScoreNumber)
             {
-                PlayerPrefs.SetInt("highscore", ScoreNumber);
+                PlayerPrefs.SetInt("HIghscore", ScoreNumber);
             }
         }
 
