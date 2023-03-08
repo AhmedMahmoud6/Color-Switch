@@ -7,21 +7,22 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    public Transform player;
+    public Transform Player;
     public Transform cam;
     public GameObject DeathMenuUI;
 
 
-    public void Cointinue()
+    public void Continue()
     {
         Time.timeScale = 1f;
         DeathMenuUI.SetActive(false);
+        player.IsPaused = false;
     }
  
     public void Retry()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        cam.position = new Vector2 (cam.position.x,player.position.y);
+        cam.position = new Vector2 (cam.position.x,Player.position.y);
         DeathMenuUI.SetActive(false);
         Time.timeScale = 1f;
     }

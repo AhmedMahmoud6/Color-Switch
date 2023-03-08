@@ -21,7 +21,7 @@ public class player : MonoBehaviour
 
     public static bool IsDead = false;
     public static bool Won = false;
-    public bool IsPaused = false;
+    public static bool IsPaused = false;
 
     public GameObject DeathMenuUI;
     public GameObject WinMenuUI;
