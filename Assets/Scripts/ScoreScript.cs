@@ -19,7 +19,7 @@ public class ScoreScript : MonoBehaviour
 
     void Start()
     {
-        highscore = PlayerPrefs.GetInt("HIghscore", 0);
+        highscore = PlayerPrefs.GetInt("HIGHscore", 0);
         ScoreNumber = 0;
         myscoreText.text = "Score : " + ScoreNumber;
         
@@ -36,7 +36,7 @@ public class ScoreScript : MonoBehaviour
     {
         if(Star.tag == "Star")
         {
-            ScoreNumber += 1;
+            ScoreNumber += 2;
             Destroy(Star.gameObject);
             myscoreText.text = "Score : " + ScoreNumber;
             DeathScore.text = "Score is " + ScoreNumber;
@@ -44,7 +44,7 @@ public class ScoreScript : MonoBehaviour
             ScoreWin.text = "Score is " + ScoreNumber;
             if (highscore < ScoreNumber)
             {
-                PlayerPrefs.SetInt("HIghscore", ScoreNumber);
+                PlayerPrefs.SetInt("HIGHscore", ScoreNumber);
             }
         }
 
